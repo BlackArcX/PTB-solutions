@@ -1,20 +1,23 @@
 import gulp from 'gulp'
 import rename from 'gulp-rename'
-import buildGulpEngine from './tools/engine.js'
+import buildUnifiedEngine from './tools/engine.js'
+import path from 'path';
 
 export function build(cb, engine=undefined, file="docs/**/*.md") {
     if (!engine) {
-        engine = buildGulpEngine(true, false);
+        engine = buildUnifiedEngine(true, false);
     }
+    const hasGlob = file.indexOf('*') > -1;
+    const dest = hasGlob ? 'dist/' : path.join('dist', path.dirname(file).split('/').slice(1).join('/'));
 
     return gulp.src(file)
         .pipe(engine())
         .pipe(rename({ extname: '.html' }))
-        .pipe(gulp.dest('dist/'));
+        .pipe(gulp.dest(dest));
 }
 
 export function watch(cb) {
-    const engine = buildGulpEngine();
+    const engine = buildUnifiedEngine();
 
     let watcher = gulp.watch('docs/**/*.md');
 
