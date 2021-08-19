@@ -19,7 +19,14 @@ export default function buildUnifiedEngine(minify = false, format = true) {
     .use(remark2rehype)
     .use(katex)
     .use(document, {
-      css: ['https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css']
+      css: [
+        'https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css',
+        'https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/font/Serif/cmun-serif.css',
+        'https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css',
+      ],
+      style: [
+        `body {font-family: 'Computer Modern Serif', sans-serif; margin: 0;}`
+      ]
     });
 
   if (format && !minify) processor.use(rehypeFormat);
