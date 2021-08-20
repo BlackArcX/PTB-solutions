@@ -24,8 +24,9 @@ export function watch(cb) {
     browserSync.init({
         server: {
             baseDir: "./dist",
-            directory: true
-        }
+            directory: true,
+        },
+        open: false,
     });
 
     const engine = buildUnifiedEngine();

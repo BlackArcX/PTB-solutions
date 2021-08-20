@@ -4,7 +4,7 @@
 $$
 \begin{steps}
    f(x-1) &= (x-1)^2 - (x-1)
-   &= %= simplify (x-1)^2-(x-1)
+   %= simplify-basic (x-1)^2-(x-1)
 \end{steps}
 $$
 

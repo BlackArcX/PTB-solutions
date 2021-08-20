@@ -1,9 +1,10 @@
 import { visit } from 'unist-util-visit';
 import { toString } from 'hast-util-to-string'
-import mathsteps from 'mathsteps';
+import {applyStepType} from './mathsteps/index.js';
+import math from 'mathjs';
 
-const COMMENT_RE1 = /%:\s*(\w+)?\s+([^:%]+):%/g;
-const COMMENT_RE2 = /%=[\t ]*(\w+)([^\n]*)/g;
+const COMMENT_RE1 = /%:(=)?\s*(\w+)?\s+([^:%]+):%/g;
+const COMMENT_RE2 = /%=(=)?[\t ]*(\w+)([^\n]*)/g;
 
 export default function plugin() {
 
@@ -18,15 +19,22 @@ export default function plugin() {
         return string.length - match[0].length;
     }
 
-    function applyCommand(command, arg) {
-        switch (command.toLowerCase()) {
-            case 'simplify':
-                let steps = mathsteps.simplifyExpression(arg);
-                if (!steps.length) return '';
-                return steps[steps.length - 1].newNode.toTex();
+    function applyCommand(command, arg, file, showSteps=false) {
+        let exprNode;
+        if (arg.trim()) {
+            try {
+                exprNode = math.parse(arg);
+            } catch (e) {
+                // file
+                return ''
+            }
         }
+        let steps = applyStepType(command, exprNode);
 
-        return '';
+        if (steps.length == 0) return '';
+        if (!showSteps) return steps[steps.length - 1].newNode.toTex();
+        
+        return '\t&= ' + steps.map((s) => s.newNode.toTex()).join('\\\\\n\t&= ');
     }
 
 
@@ -38,13 +46,13 @@ export default function plugin() {
             for (let i = 0; i < lines.length; i++) {
                 let matches = lines[i].matchAll(COMMENT_RE1);
                 for (let match of matches) {
-                    offset += replace(node, applyCommand(match[1], match[2]), match, offset);
+                    offset += replace(node, applyCommand(match[2], match[3], file, !!match[1]), match, offset);
                 }
 
                 // because regex in stateful so we need to create a new instance everytime
                 let match = new RegExp(COMMENT_RE2).exec(lines[i]);
                 if (match) {
-                    offset += replace(node, applyCommand(match[1], match[2]), match, offset);
+                    offset += replace(node, applyCommand(match[2], match[3], file, !!match[1]), match, offset);
                 }
 
                 offset += (lines[i].length + 1);
