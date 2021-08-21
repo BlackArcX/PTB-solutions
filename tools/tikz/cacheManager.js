@@ -100,8 +100,8 @@ tikzCache.removeUnused = function (fileName = undefined) {
         used = Object.values(this.used).reduce((acc, el) => new Set([...acc, ...el]), new Set());
     }
     else {
-        cached = this.logs[fileName];
-        used = this.used[fileName];
+        cached = this.logs[fileName] || [];
+        used = this.used[fileName] || [];
     }
 
     let unused = Array.from(cached).filter((e) => !used.has(e));
