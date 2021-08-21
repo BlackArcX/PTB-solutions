@@ -3,8 +3,8 @@ import { toString } from 'hast-util-to-string'
 import {applyStepType} from './mathsteps/index.js';
 import math from 'mathjs';
 
-const COMMENT_RE1 = /%:(=)?\s*(\w+)?\s+([^:%]+):%/g;
-const COMMENT_RE2 = /%=(=)?[\t ]*(\w+)([^\n]*)/g;
+const COMMENT_RE1 = /%:(=)?\s*([\w-_]+)?\s+([^:%]+):%/g;
+const COMMENT_RE2 = /%=(=)?[\t ]*([\w-_]+)([^\n]*)/g;
 
 export default function plugin() {
 
@@ -25,8 +25,8 @@ export default function plugin() {
             try {
                 exprNode = math.parse(arg);
             } catch (e) {
-                // file
-                return ''
+                file.message(`Can't parse expression ${arg} for command ${command}`);
+                return '';
             }
         }
         let steps = applyStepType(command, exprNode);
