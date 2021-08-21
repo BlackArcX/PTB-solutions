@@ -1,9 +1,11 @@
-import gulp from 'gulp'
-import rename from 'gulp-rename'
-import buildUnifiedEngine from './tools/engine.js'
+import gulp from 'gulp';
+import rename from 'gulp-rename';
 import path from 'path';
 import fs from 'fs';
 import BrowserSync from 'browser-sync';
+
+import buildUnifiedEngine from './tools/engine.js';
+import {tikzCache} from './tools/tikz/index.js';
 
 let browserSync = BrowserSync.create();
 
@@ -14,10 +16,20 @@ export function build(cb, engine=undefined, file="docs/**/*.md") {
     const hasGlob = file.indexOf('*') > -1;
     const dest = hasGlob ? 'dist/' : path.join('dist', path.dirname(file).split('/').slice(1).join('/'));
 
+    if (hasGlob) {
+        tikzCache.init();
+    } else {
+        tikzCache.resetUsed(file);
+    }
+
     return gulp.src(file)
         .pipe(engine())
         .pipe(rename({ extname: '.html' }))
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(dest))
+        .on('end', () => {
+            tikzCache.removeUnused(hasGlob ? undefined : file);
+            tikzCache.saveLogs();
+        });
 }
 
 export function watch(cb) {
