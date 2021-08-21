@@ -8,7 +8,8 @@ export function remarkTikz() {
                 node.data = {
                     hName: 'div',
                     hProperties: {
-                        className: ['tikz-picture']
+                        className: ['tikz-picture'],
+                        style: `text-align: center;`
                     },
                     hChildren: [{
                         type: 'text',
