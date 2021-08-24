@@ -2,16 +2,17 @@
 
 1. When $f(x) = x^2 - x$
 $$
-\begin{steps}
-   f(-2) &= (-2)^2 - (-2)
-   &= %= simplify (-2)^2-(-2)
-\end{steps}
+\begin{split}
+   f(-2) &= (-2)^2 - (-2) \\
+   &= 4+2 \\
+   &= 6
+\end{split}
 $$
 
 2. When $f(x) = \sqrt{x + 4}$
 $$
-\begin{steps}
-   f(-2) &= \sqrt{-2 + 4}
-   &= %= simplify nthRoot(-2 + 4, 2)
-\end{steps}
+\begin{split}
+   f(-2) &= \sqrt{-2 + 4} \\
+   &= \sqrt{2}
+\end{split}
 $$

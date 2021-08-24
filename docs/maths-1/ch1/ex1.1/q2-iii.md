@@ -1,0 +1,18 @@
+**Find $\frac{f(a+h)-f(a)}{h}$ and simplify, where** $$f(x)=x^3+2x^2-1 x$$
+
+$$
+\begin{split}
+   f(a+h) &= (a+h)^3+2(a+h)^2-1 \\
+   &= a^3+h^3+3a^2h+3ah^2+2(a+h)^2 -1 \qquad\quad\left[\because (a+b)^3=a^3+b^3+3a^2b+3ab^2\right] \\
+   &= a^3+h^3+3a^2h+3ah^2+2(a^2+2ah+h^2) -1 \qquad\quad\left[\because (a+b)^2=a^2+2ab+b^2\right] \\
+   &= a^3+h^3+3a^2h+3ah^2+2a^2+4ah+2h^2 -1 \\\\
+
+   f(a) &= a^3+2a^2-1\\\\
+
+   \frac{f(a+h)-f(a)}{h} &= \frac{(a^3+h^3+3a^2h+3ah^2+2a^2+4ah+2h^2-1) - (a^3+2a^2-1)}{h} \\
+   &= \frac{h^3+3a^2h+2ah^2+4ah+2h^2}{h} \\
+   &= h^2+3a^2+3ah+4a+2h \\
+   &= h^2+3ah+2h+3a^2+4a \qquad\quad\left(\text{By Rearranging}\right) \\
+   &= h^2+(3a+2)h+3a^2+4a
+\end{split}
+$$

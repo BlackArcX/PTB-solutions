@@ -2,16 +2,16 @@
 
 1. When $f(x) = x^2 - x$
 $$
-\begin{steps}
-   f(0) &= (0)^2 - (0)
-   &= %= simplify (0)^2-(0)
-\end{steps}
+\begin{split}
+   f(0) &= (0)^2 - (0) \\
+   &= 0
+\end{split}
 $$
 
 2. When $f(x) = \sqrt{x + 4}$
 $$
-\begin{steps}
-   f(0) &= \sqrt{0 + 4}
-   &= %= simplify nthRoot(0 + 4, 2)
-\end{steps}
+\begin{split}
+   f(0) &= \sqrt{0 + 4} \\
+   &= \sqrt{4}
+\end{split}
 $$

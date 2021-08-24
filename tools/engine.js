@@ -6,7 +6,7 @@ import remark2rehype from 'remark-rehype'
 import rehypeFormat from 'rehype-format'
 import rehypeMinify from 'rehype-preset-minify'
 import rehypeDocument from 'rehype-document'
-import html from 'rehype-stringify'
+import rehypeStringify from 'rehype-stringify'
 
 import rehypeKatex from './rehype-katex.js'
 import remarkMathsteps from './remark-mathsteps.js'
@@ -28,7 +28,13 @@ export default function buildUnifiedEngine(minify = false, format = true) {
         'https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css',
       ],
       style: [
-        `body {font-family: 'Computer Modern Serif', sans-serif; margin: 0;}`
+        `
+        body {font-family: 'Computer Modern Serif', sans-serif; margin: 0;}
+        .katex-display { overflow-x: auto; padding-top: 0.5em; }
+        .katex-display > .katex { white-space: normal!important; }
+        .katex-display > .base { margin: 0.25em 0!important; }
+        .katex-display { margin: 0.5em 0!important; }
+        `,
       ]
     });
 
@@ -38,7 +44,7 @@ export default function buildUnifiedEngine(minify = false, format = true) {
     processor.use(rehypeMinify);
   }
 
-  processor.use(html);
+  processor.use(rehypeStringify);
 
   return gulpEngine(
     {
