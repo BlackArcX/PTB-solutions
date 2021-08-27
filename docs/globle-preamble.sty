@@ -4,32 +4,30 @@
 \usepackage[margin=1in]{geometry}
 % for graphics
 \usepackage{tikz}
-% for equations without tags
+% for equations
 \usepackage{amsmath}
 % for symbols like \because
 \usepackage{amssymb}
 % to import sub latex files
 \usepackage{import}
-% to remove section numbering
+% for sections related stuff
 \usepackage{sectsty}
 
-\usepackage[]{hyperref}
+\usepackage{hyperref}
 \hypersetup{
-    pdftitle={Your title here},
-    pdfauthor={Your name here},
-    pdfsubject={Your subject here},
-    pdfkeywords={keyword1, keyword2},
-    bookmarksnumbered=true,     
-    bookmarksopen=true,         
-    bookmarksopenlevel=1,       
-    colorlinks=true,            
-    pdfstartview=Fit,           
-    pdfpagemode=UseOutlines,    % this is the option you were lookin for
-    pdfpagelayout=TwoPageRight
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
 }
-
 
 % remove pagraph start indentation
 \setlength{\parindent}{0em}
 % remove page numbers
 \pagenumbering{gobble}
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
