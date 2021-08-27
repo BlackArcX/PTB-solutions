@@ -1,0 +1,22 @@
+\documentclass[crop=false,fleqn]{standalone}
+\usepackage{../../../globle-preamble}
+
+\begin{document}
+    \textbf{Find $\frac{f(a+h)-f(a)}{h}$ and simplify, where $f(x)=\cos(x)$}
+
+    \begin{align*}
+        f(a+h) &= \cos(a+h) \\
+        \\
+        f(a) &= \cos(a) \\
+        \\
+        \frac{f(a+h)-f(a)}{h} &= \frac{\cos(a+h) - \cos(a)}{h} \\
+            &= \frac{-2 \sin\left(\frac{a+h+a}{2}\right) \sin\left(\frac{a+h-a}{2}\right)}{h}
+                \tag{$
+                    \because \cos(a) - \cos(b) = -2
+                    \sin\left(\frac{p+q}{2}\right)
+                    \sin\left(\frac{p-q}{2}\right)
+                $} \\
+            &= \frac{-2}{h} \sin\left(\frac{2a+h}{2}\right) \sin\left(\frac{a}{h}\right) \\
+            &= \frac{-2}{h} \sin\left(a+\frac{h}{2}\right) \sin\left(\frac{a}{h}\right)
+    \end{align*}
+\end{document}

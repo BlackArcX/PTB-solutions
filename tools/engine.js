@@ -7,6 +7,8 @@ import rehypeFormat from 'rehype-format'
 import rehypeMinify from 'rehype-preset-minify'
 import rehypeDocument from 'rehype-document'
 import rehypeStringify from 'rehype-stringify'
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 import rehypeKatex from './rehype-katex.js'
 import remarkMathsteps from './remark-mathsteps.js'
@@ -15,11 +17,13 @@ import {remarkTikz, rehypeTikz} from './tikz/index.js'
 export default function buildUnifiedEngine(minify = false, format = true) {
   let processor = unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remarkMath)
     .use(remarkMathsteps)
     .use(remarkTikz)
     // .use(() => tree => console.log(JSON.stringify(tree, null, 2)))
-    .use(remark2rehype)
+    .use(remark2rehype, {allowDangerousHtml: true})
+    .use(rehypeRaw)
     .use(rehypeKatex)
     .use(rehypeTikz)
     .use(rehypeDocument, {
@@ -34,6 +38,11 @@ export default function buildUnifiedEngine(minify = false, format = true) {
         .katex-display > .katex { white-space: normal!important; }
         .katex-display > .base { margin: 0.25em 0!important; }
         .katex-display { margin: 0.5em 0!important; }
+        table { border-collapse: collapse; margin: 1em auto; }
+        table td { border-left: 1px solid #000; border-right: 1px solid #000; }
+        table tr:last-child td { border-bottom: 1px solid #000; }
+        table td, table th { padding: .5em 1em; }
+        table thead td, table thead th { border: 1px solid #000; }
         `,
       ]
     });
