@@ -1,26 +1,34 @@
 \documentclass[crop=false,fleqn]{standalone}
 \usepackage{../../../globle-preamble}
 
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
 \begin{document}
     \textbf{
-        Show that the parameteric equations $x=a\cos\theta$, $y=a\sin\theta$
+        Show that the parameteric equations $x=a\cos\theta$, $y=b\sin\theta$
         represent the equation of parabola $\frac{x^2}{y^2}+\frac{y^2}{b^2}=1$.
     }
 
-    From equation $y=2at$.
+    \begin{multicols}{2}
+        \begin{align*}
+            x &= a\cos\theta \\
+            \frac{x}{a} &= \cos\theta \\
+            \frac{x^2}{a^2} &= \cos^2\theta \tag{1}
+        \end{align*}
 
-    $$
-    t=\frac{y}{2a}
-    $$
+        \begin{align*}
+            y &= b\sin\theta \\
+            \frac{y}{b} &= \sin\theta \\
+            \frac{y^2}{b^2} &= \sin^2\theta  \tag{2}
+        \end{align*}
+    \end{multicols}
 
-    Putting in $x=at^2$
+    Adding equation (1) \& (2)
 
     \begin{align*}
-        x &= a\left(\frac{y}{2a}\right)^2 \\
-            &= a\frac{y^2}{4a^2} \\
-        x &= \frac{y^2}{4a} \\
-        \\
-        \implies y^2 &= 4ax \tag{By Rearranging}
+        \frac{x^2}{a^2} + \frac{y^2}{b^2} &= \cos^2\theta + \sin^2\theta \\
+        \frac{x^2}{a^2} + \frac{y^2}{b^2} &= 1 \\
     \end{align*}
 
     Hence proved.

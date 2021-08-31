@@ -1,0 +1,35 @@
+\documentclass[crop=false,fleqn]{standalone}
+\usepackage{../../../globle-preamble}
+
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+    \textbf{
+        Show that the parameteric equations $x=a\sec\theta$, $y=b\tan\theta$
+        represent the equation of parabola $\frac{x^2}{y^2}-\frac{y^2}{b^2}=1$.
+    }
+
+    \begin{multicols}{2}
+        \begin{align*}
+            x &= a\sec\theta \\
+            \frac{x}{a} &= \sec\theta \\
+            \frac{x^2}{a^2} &= \sec^2\theta \tag{1}
+        \end{align*}
+
+        \begin{align*}
+            y &= b\tan\theta \\
+            \frac{y}{b} &= \tan\theta \\
+            \frac{y^2}{b^2} &= \tan^2\theta  \tag{2}
+        \end{align*}
+    \end{multicols}
+
+    Subtarcting equation (2) from (1)
+
+    \begin{align*}
+        \frac{x^2}{a^2} - \frac{y^2}{b^2} &= \sec^2\theta + \tan^2\theta \\
+        \frac{x^2}{a^2} - \frac{y^2}{b^2} &= 1 \\
+    \end{align*}
+
+    Hence proved.
+\end{document}

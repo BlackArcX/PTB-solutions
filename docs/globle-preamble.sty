@@ -14,14 +14,7 @@
 \usepackage{sectsty}
 
 \usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    pdftitle={Overleaf Example},
-    pdfpagemode=FullScreen,
-}
+\hypersetup{colorlinks=true}
 
 % remove pagraph start indentation
 \setlength{\parindent}{0em}
@@ -31,3 +24,6 @@
 \makeatletter
 \renewcommand{\@seccntformat}[1]{}
 \makeatother
+
+\subsubsectionfont{\sectionrule{0pt}{0pt}{-5pt}{0.8pt}}
+\subsectionfont{\center}

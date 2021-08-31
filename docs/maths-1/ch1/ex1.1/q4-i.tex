@@ -13,11 +13,11 @@
     \vspace{1em}
 
     \begin{center}
-        \begin{tabular}{ |c|c|c|c|c|c|c|c| } 
+        \begin{tabular}{ |c|c|c|c|c|c|c| } 
             \hline
-            $x$ & -3 & -2 & -1 & 0 & 1 & 2 & 3 \\ 
+            $x$ & -2 & -1 & 0 & 1 & 2 & 3 \\ 
             \hline
-            $g(x)$ & -7 & -9 & -7 & -5 & -3 & -1 & 1 \\
+            $g(x)$ & -9 & -7 & -5 & -3 & -1 & 1 \\
             \hline
         \end{tabular}
     \end{center}
@@ -30,7 +30,7 @@
             
             \draw[domain=-3.5:4.5, smooth, variable=\x, thick, blue] plot ({\x}, {2*\x-5});
 
-            \foreach \Point in {(-3,-7), (-2,-9), (-1,-7), (0,-5), (1,-3), (2,-1), (3, 1)}{
+            \foreach \Point in {(-2,-9), (-1,-7), (0,-5), (1,-3), (2,-1), (3, 1)}{
                 \node at \Point {$\circ$};
             }
         \end{tikzpicture}
