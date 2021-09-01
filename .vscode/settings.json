@@ -1,0 +1,14 @@
+{
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "latex-workshop.latex.outDir": "%DIR%/aux",
+    "editor.rulers": [
+        100
+    ],
+    "latex-workshop.latex.autoBuild.run": "never",
+    "[latex]": {
+        "editor.formatOnPaste": false,
+        "editor.suggestSelection": "recentlyUsedByPrefix"
+    },
+    "latex-workshop.latex.autoClean.run": "onBuilt"
+}
