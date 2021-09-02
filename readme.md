@@ -2,7 +2,7 @@
 
 ## How to Run?
 
-### prerequisites
+### Prerequisites
 * Visual Studio Code
 * Docker 
 * Docker-Compose
