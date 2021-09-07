@@ -1,22 +1,12 @@
 {
 	"name": "PTB Guides",
-
-	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
-	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
 	"dockerComposeFile": [
 		"./docker-compose.yml"
 	],
-
-	// The 'service' property is the name of the service for the container that VS Code should
-	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
 	"service": "texlive",
-
 	"runServices": ["texlive"],
-
-	// The optional 'workspaceFolder' property is the path VS Code should open by default when
-	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
 	"workspaceFolder": "/workspace",
-
+	"remoteUser": "vscode",
 	"settings": {
 		"latex-workshop.view.pdf.viewer": "tab",
 		"latex-workshop.synctex.afterBuild.enabled": true,
@@ -24,7 +14,7 @@
 		"editor.rulers": [
 			100
 		],
-		"latex-workshop.latex.autoBuild.run": "never",
+		"latex-workshop.latex.autoBuild.run": "onSave",
 		"[latex]": {
 			"editor.formatOnPaste": false,
 			"editor.suggestSelection": "recentlyUsedByPrefix"
@@ -34,7 +24,7 @@
 
 	"extensions": [
 		"james-yu.latex-workshop"
-	],
+	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -48,6 +38,4 @@
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
 	// "postCreateCommand": "",
 
-	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
 }
